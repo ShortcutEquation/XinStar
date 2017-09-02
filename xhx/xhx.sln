@@ -1,0 +1,43 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 14
+VisualStudioVersion = 14.0.25420.1
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "www.xinStar.com", "xProject\Client\Web\www.xinStar.com\www.xinStar.com.csproj", "{C807EC2B-6584-4103-8876-A940C0FA5B7D}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "XProject", "XProject", "{E6B9FA57-40AF-4F5B-AAC1-DAA26CC4E8E5}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Client", "Client", "{2F93715C-2726-4334-A0F7-30DA8AB063AD}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Web", "Web", "{DFFE9DDB-8B02-46B8-B3FF-DAC898404A49}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Win", "Win", "{1AB026E8-C90D-4FE6-A360-5C2C4D432255}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ServiceCenter", "xProject\Client\Win\ServiceCenter\ServiceCenter.csproj", "{CCF50CBC-A75E-4306-98F1-8B9E64E4D4B1}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{C807EC2B-6584-4103-8876-A940C0FA5B7D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C807EC2B-6584-4103-8876-A940C0FA5B7D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C807EC2B-6584-4103-8876-A940C0FA5B7D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C807EC2B-6584-4103-8876-A940C0FA5B7D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CCF50CBC-A75E-4306-98F1-8B9E64E4D4B1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CCF50CBC-A75E-4306-98F1-8B9E64E4D4B1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CCF50CBC-A75E-4306-98F1-8B9E64E4D4B1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CCF50CBC-A75E-4306-98F1-8B9E64E4D4B1}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{C807EC2B-6584-4103-8876-A940C0FA5B7D} = {DFFE9DDB-8B02-46B8-B3FF-DAC898404A49}
+		{2F93715C-2726-4334-A0F7-30DA8AB063AD} = {E6B9FA57-40AF-4F5B-AAC1-DAA26CC4E8E5}
+		{DFFE9DDB-8B02-46B8-B3FF-DAC898404A49} = {2F93715C-2726-4334-A0F7-30DA8AB063AD}
+		{1AB026E8-C90D-4FE6-A360-5C2C4D432255} = {2F93715C-2726-4334-A0F7-30DA8AB063AD}
+		{CCF50CBC-A75E-4306-98F1-8B9E64E4D4B1} = {1AB026E8-C90D-4FE6-A360-5C2C4D432255}
+	EndGlobalSection
+EndGlobal
