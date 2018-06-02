@@ -1,5 +1,0 @@
-C:\XinStarProject\xhx\xProject\Client\Win\ServiceCenter\bin\Debug\ServiceCenter.dll
-C:\XinStarProject\xhx\xProject\Client\Win\ServiceCenter\bin\Debug\ServiceCenter.pdb
-C:\XinStarProject\xhx\xProject\Client\Win\ServiceCenter\obj\Debug\ServiceCenter.csprojResolveAssemblyReference.cache
-C:\XinStarProject\xhx\xProject\Client\Win\ServiceCenter\obj\Debug\ServiceCenter.dll
-C:\XinStarProject\xhx\xProject\Client\Win\ServiceCenter\obj\Debug\ServiceCenter.pdb
