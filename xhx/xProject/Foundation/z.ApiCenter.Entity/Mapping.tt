@@ -1,0 +1,150 @@
+﻿<#@ template debug="false" hostspecific="true" language="C#" #>
+<#@ assembly name="System.Core" #>
+<#@ import namespace="System.Linq" #>
+<#@ import namespace="System.Text" #>
+<#@ import namespace="System.Collections.Generic" #>
+<#@ import namespace="System.IO" #>
+<#@ include file="MultipleOutputHelper.ttinclude"#>
+<#@ include file="MySQL.ttinclude"#>
+<#@ include file="Settings.ttinclude"#>
+<#@ output extension="\\" #>
+<# 
+var manager = Manager.Create(Host, GenerationEnvironment);
+
+var tables = LoadTables();
+foreach (Table tbl in tables)
+{
+    var fkTables = LoadFKTables(tbl.Name);
+    if (ExcludeTables.Contains(tbl.Name)) { continue; }
+    manager.StartNewFile(tbl.ClassName + ".hbm.xml"); 
+#>
+<?xml version="1.0" encoding="utf-8" ?>
+<hibernate-mapping default-cascade="none" xmlns="urn:nhibernate-mapping-2.2">
+	<class name="<#= EntityNamespace #>.<#= CleanUp(tbl.ClassName) #>, <#= EntityNamespace #>" table="<#= tbl.Name #>" dynamic-update="true">
+<# 
+	var pks = tbl.Columns.FindAll(p => p.IsPK == true);
+	if(pks.Count > 1) 
+	{ 
+#>
+		<composite-id name="PK_<#= CleanUp(tbl.ClassName) #>" class="<#= EntityNamespace #>.<#= CleanUp(tbl.ClassName) #>+<#= CleanUp(tbl.ClassName) #>Key, <#= EntityNamespace #>" unsaved-value="none" access="property">
+<#
+		foreach (var col in pks)
+		{
+			var fktb = fkTables.FirstOrDefault(p => p.ThisTable == tbl.Name && p.ThisColumn == col.Name);
+			if(fktb == null)
+			{
+#>
+				<key-property name="<#= col.Name #>" />
+<#
+			}
+			else
+			{
+#>
+				<key-many-to-one name="<#= Inflector.MakeSingular(CleanUp(fktb.OtherTable)) #>" column="<#= col.Name #>" class="<#= EntityNamespace #>.<#= fktb.OtherClass #>, <#= EntityNamespace #>" not-found="ignore" />
+<#
+			}
+		}
+#>
+		</composite-id>
+<#
+	}
+	else if (pks.Count == 1) 
+	{ 
+#>
+		<id name="<#= pks[0].Name #>" type="<#= pks[0].SysType #>" column="<#= pks[0].Name #>" unsaved-value="<# if (pks[0].AutoIncrement) { #>0<# } else { #>none<# } #>">
+<#		if (pks[0].DbType == DbType.Guid) 
+		{ 
+#>
+			<generator class="guid" />
+<#		
+		} 
+		else if (pks[0].AutoIncrement) 
+		{ 
+#>
+			<generator class="native" />
+<# 
+		} 
+		else if(fkTables.Any(p => p.ThisColumn == pks[0].Name && p.ThisTable == tbl.Name)) 
+		{ 
+			var fkt = fkTables.FirstOrDefault(p => p.ThisColumn == pks[0].Name && p.ThisTable == tbl.Name); 
+#>
+			<generator class="foreign">
+				<param name="property"><#= Inflector.MakeSingular(CleanUp(fkt.OtherTable)) #></param>
+			</generator>
+<# 
+		} 
+		else 
+		{ 
+#>
+			<generator class="assigned" />
+<# 
+		} 
+#>
+		</id>
+<#	
+	}
+	foreach (var col in tbl.Columns)
+	{
+		if (tbl.ClassName == col.CleanName) //特殊处理字段名称和表名称冲突问题
+		{
+			  col.CleanName += "Col";
+		}
+		if (col.IsPK)
+		{
+			continue;
+		}
+		else
+		{
+			if (fkTables.Exists(p => p.ThisColumn == col.Name))
+			{
+				continue;
+			}
+#>
+		<property name="<#= col.CleanName #>" type="<#= col.SysType #>" column="<#= col.Name #>" not-null="<#= col.IsNullable ? "false" : "true" #>" />
+<#		
+		}
+	}
+	foreach (FKTable fkt in fkTables)
+	{
+		var ftbl = tables.FirstOrDefault(tb => tb.Name == fkt.ThisTable);
+		if (fkt.ThisTable == tbl.Name)
+		{
+			if (tbl.Columns.Count(p => p.IsPK == true) == 1 && tbl.Columns.Any(p => p.Name == fkt.ThisColumn && p.IsPK ==true))
+			{
+#>
+		<one-to-one name="<#= Inflector.MakeSingular(CleanUp(fkt.OtherTable)) #>" class="<#= EntityNamespace #>.<#= fkt.OtherClass #>, <#= EntityNamespace #>" constrained="true"/>
+<#
+			}
+			else if (tbl.Columns.Count(p => p.IsPK == true) == 1)
+			{
+#>
+		<many-to-one name="<#= Inflector.MakeSingular(CleanUp(fkt.ThisColumn)) #>" column="<#= fkt.ThisColumn #>" class="<#= EntityNamespace #>.<#= fkt.OtherClass #>, <#= EntityNamespace #>" cascade="none" outer-join="true" />
+<#
+			}
+		}
+		else if (fkt.OtherTable == tbl.Name && fkt.ThisColumn == fkt.OtherColumn && ftbl.Columns.Count(p => p.IsPK == true) == 1 && ftbl.Columns.Any(p => p.Name == fkt.ThisColumn && p.IsPK == true))
+		{
+#>
+		<one-to-one name="<#= Inflector.MakeSingular(CleanUp(fkt.ThisTable)) #>" class="<#= EntityNamespace #>.<#= Inflector.MakeSingular(CleanUp(fkt.ThisTable)) #>, <#= EntityNamespace #>" cascade="all"/>
+<#
+		}
+		else
+		{
+#>
+		<bag name="<#= Inflector.MakePlural(CleanUp(fkt.ThisColumn.Replace(fkt.OtherColumn, "") + fkt.ThisTable)) #>" inverse="true" lazy="true" cascade="save-update">
+			<key>
+				<column name="<#= fkt.ThisColumn #>" not-null="true" />
+			</key>
+			<one-to-many class="<#= EntityNamespace #>.<#= Inflector.MakeSingular(CleanUp(fkt.ThisTable)) #>, <#= EntityNamespace #>" />
+		</bag>
+<#
+		}
+	}
+#>
+	</class>
+</hibernate-mapping>
+<#
+	manager.EndBlock();
+}
+manager.Process(true);
+#>

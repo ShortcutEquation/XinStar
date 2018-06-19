@@ -1,0 +1,10 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<hibernate-mapping default-cascade="none" xmlns="urn:nhibernate-mapping-2.2">
+	<class name="z.ApiCenter.Entity.api_client_function, z.ApiCenter.Entity" table="api_client_function" dynamic-update="true">
+		<id name="Id" type="System.Int32" column="Id" unsaved-value="0">
+			<generator class="native" />
+		</id>
+		<property name="ClientId" type="System.Int32" column="ClientId" not-null="true" />
+		<property name="FunctionId" type="System.Int32" column="FunctionId" not-null="true" />
+	</class>
+</hibernate-mapping>

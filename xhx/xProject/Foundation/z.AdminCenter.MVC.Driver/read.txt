@@ -1,0 +1,32 @@
+﻿MVC站点使用AdminCenter配置步骤：
+1. 在AdminCenter创建系统，并分配Code、Key
+
+2. MVC站点引用 z.AdminCenter.MVC.Driver.dll
+
+3. 修改web.config：
+   1> <add key="AdminCenterDomain" value="AdminCenter域名" />
+      <add key="SystemCode" value="分配的Code" />
+      <add key="Key" value="分配的Key" />
+
+   2> <system.webServer>
+		<handlers>
+		  <add name="WriteTicketHandle" verb="*" path="WriteTicket" type="z.AdminCenter.Logic.WriteTicketHandle, z.AdminCenter.Logic" />
+		  <add name="cfg.xml" verb="*" path="*.cfg.xml" type="System.Web.HttpNotFoundHandler" />
+		</handlers>
+		<modules>
+		  <add name="HttpStatusModule" type="z.AdminCenter.Logic.HttpStatusModule, z.AdminCenter.Logic" />
+		</modules>
+		<staticContent>
+		  <remove fileExtension=".woff" />
+		  <mimeMap fileExtension=".woff" mimeType="application/x-font-woff" />
+		</staticContent>
+	  </system.webServer>
+
+4. 修改路由，忽略WriteTicket：routes.IgnoreRoute("WriteTicket");
+
+5. MVC站点所有Controller继承ControllerAdminBase（需要引用命名空间：z.AdminCenter.MVC.Driver）
+
+6. 当MVC站点出错时会自动跳转到AdminCenter统一错误页，此时可注释掉web.config中如下配置即可查看具体错误
+   <modules>
+     <add name="HttpStatusModule" type="z.AdminCenter.Logic.HttpStatusModule, z.AdminCenter.Logic" />
+   </modules>

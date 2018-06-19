@@ -1,0 +1,86 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{3D03CFC1-7A5D-4CD9-AD04-6AE1F685B078}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>z.AdminCenter.MVC.Driver</RootNamespace>
+    <AssemblyName>z.AdminCenter.MVC.Driver</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Mvc">
+      <HintPath>..\..\packages\Microsoft.AspNet.Mvc.5.2.3\lib\net45\System.Web.Mvc.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="CheckPermissionAttribute.cs" />
+    <Compile Include="ControllerAdminBase.cs" />
+    <Compile Include="ControllerBase.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="read.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\z.AdminCenter.Entity\z.AdminCenter.Entity.csproj">
+      <Project>{5eb1258e-138b-452c-9fe9-f6c184c6957c}</Project>
+      <Name>z.AdminCenter.Entity</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\z.AdminCenter.Logic\z.AdminCenter.Logic.csproj">
+      <Project>{dca912e4-6337-4190-aaf6-6f47a79c60a0}</Project>
+      <Name>z.AdminCenter.Logic</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\z.Foundation.Data\z.Foundation.Data.csproj">
+      <Project>{37e03fa3-0531-4a3a-9eaf-a0469b20f9f1}</Project>
+      <Name>z.Foundation.Data</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\z.Foundation.LogicInvoke\z.Foundation.LogicInvoke.csproj">
+      <Project>{867c810e-1cdc-4663-b7e3-a6c6d951852d}</Project>
+      <Name>z.Foundation.LogicInvoke</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\z.Foundation\z.Foundation.csproj">
+      <Project>{866936fe-f516-4394-8a19-a11757e1e2b2}</Project>
+      <Name>z.Foundation</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

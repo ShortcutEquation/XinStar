@@ -1,0 +1,15 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<hibernate-mapping default-cascade="none" xmlns="urn:nhibernate-mapping-2.2">
+	<class name="z.UpdateCenter.Entity.update_pack_project, z.UpdateCenter.Entity" table="update_pack_project" dynamic-update="true">
+		<id name="Id" type="System.Int32" column="Id" unsaved-value="0">
+			<generator class="native" />
+		</id>
+		<property name="PackId" type="System.Int32" column="PackId" not-null="true" />
+		<property name="ServerId" type="System.Int32" column="ServerId" not-null="false" />
+		<property name="ProjectId" type="System.Int32" column="ProjectId" not-null="true" />
+		<property name="Status" type="System.Int32" column="Status" not-null="true" />
+		<property name="Result" type="System.String" column="Result" not-null="false" />
+		<property name="CreateTime" type="System.DateTime" column="CreateTime" not-null="false" />
+		<property name="FinishTime" type="System.DateTime" column="FinishTime" not-null="false" />
+	</class>
+</hibernate-mapping>

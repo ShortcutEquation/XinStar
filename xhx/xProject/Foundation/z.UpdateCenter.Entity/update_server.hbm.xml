@@ -1,0 +1,19 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<hibernate-mapping default-cascade="none" xmlns="urn:nhibernate-mapping-2.2">
+	<class name="z.UpdateCenter.Entity.update_server, z.UpdateCenter.Entity" table="update_server" dynamic-update="true">
+		<id name="Id" type="System.Int32" column="Id" unsaved-value="0">
+			<generator class="native" />
+		</id>
+		<property name="ServerName" type="System.String" column="ServerName" not-null="true" />
+		<property name="IpAddress" type="System.String" column="IpAddress" not-null="true" />
+		<property name="FtpUserName" type="System.String" column="FtpUserName" not-null="true" />
+		<property name="FtpUserPassword" type="System.String" column="FtpUserPassword" not-null="true" />
+		<property name="FtpPort" type="System.Int32" column="FtpPort" not-null="true" />
+		<property name="FtpUploadPath" type="System.String" column="FtpUploadPath" not-null="true" />
+		<property name="FileFunctions" type="System.String" column="FileFunctions" not-null="false" />
+		<property name="FileMD5" type="System.String" column="FileMD5" not-null="false" />
+		<property name="FileLength" type="System.Int64" column="FileLength" not-null="false" />
+		<property name="CheckFileValid" type="System.Int32" column="CheckFileValid" not-null="false" />
+		<property name="BackupPath" type="System.String" column="BackupPath" not-null="false" />
+	</class>
+</hibernate-mapping>

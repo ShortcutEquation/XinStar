@@ -1,0 +1,14 @@
+C:\Git_Papago_Project\z\v4.5\z.Foundation.LogicInvoke\bin\Release\z.Foundation.LogicInvoke.dll
+C:\Git_Papago_Project\z\v4.5\z.Foundation.LogicInvoke\bin\Release\z.Foundation.LogicInvoke.pdb
+C:\Git_Papago_Project\z\v4.5\z.Foundation.LogicInvoke\bin\Release\z.Foundation.dll
+C:\Git_Papago_Project\z\v4.5\z.Foundation.LogicInvoke\bin\Release\log4net.dll
+C:\Git_Papago_Project\z\v4.5\z.Foundation.LogicInvoke\bin\Release\Gif.Components.dll
+C:\Git_Papago_Project\z\v4.5\z.Foundation.LogicInvoke\bin\Release\Enyim.Caching.dll
+C:\Git_Papago_Project\z\v4.5\z.Foundation.LogicInvoke\bin\Release\Newtonsoft.Json.dll
+C:\Git_Papago_Project\z\v4.5\z.Foundation.LogicInvoke\bin\Release\z.Foundation.pdb
+C:\Git_Papago_Project\z\v4.5\z.Foundation.LogicInvoke\bin\Release\log4net.xml
+C:\Git_Papago_Project\z\v4.5\z.Foundation.LogicInvoke\bin\Release\Enyim.Caching.xml
+C:\Git_Papago_Project\z\v4.5\z.Foundation.LogicInvoke\bin\Release\Newtonsoft.Json.xml
+C:\Git_Papago_Project\z\v4.5\z.Foundation.LogicInvoke\obj\Release\z.Foundation.LogicInvoke.csprojResolveAssemblyReference.cache
+C:\Git_Papago_Project\z\v4.5\z.Foundation.LogicInvoke\obj\Release\z.Foundation.LogicInvoke.dll
+C:\Git_Papago_Project\z\v4.5\z.Foundation.LogicInvoke\obj\Release\z.Foundation.LogicInvoke.pdb

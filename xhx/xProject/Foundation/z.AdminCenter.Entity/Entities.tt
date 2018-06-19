@@ -1,0 +1,421 @@
+﻿<#@ template debug="false" hostspecific="true" language="C#" #>
+<#@ assembly name="System.Core" #>
+<#@ assembly name="$(SolutionDir)\packages\NHibernate.4.0.4.4000\lib\Net40\NHibernate.dll" #>
+<#@ import namespace="System.Linq" #>
+<#@ import namespace="System.Text" #>
+<#@ import namespace="System.Collections.Generic" #>
+<#@ import namespace="NHibernate.Cfg.MappingSchema" #>
+<#@ include file="MultipleOutputHelper.ttinclude"#>
+<#@ include file="MySQL.ttinclude"#>
+<#@ include file="Settings.ttinclude"#>
+<#@ output extension="\\" #>
+<#
+var manager = Manager.Create(Host, GenerationEnvironment); 
+
+var basePath = Path.GetDirectoryName(Host.TemplateFile);
+var hbmFiles = Directory.GetFiles(basePath, "*.xml");
+var tables = LoadTables();
+
+foreach (var hbmFile in hbmFiles)
+{
+	ClassItem classItem = null;
+    MappingDocumentParser mappingDocumentParser = new MappingDocumentParser();
+    FileStream fileStream = File.Open(Path.Combine(basePath, hbmFile), FileMode.Open);
+    HbmMapping hbmMapping = mappingDocumentParser.Parse(fileStream);
+    fileStream.Close();
+
+    foreach (object hbmMappingItem in hbmMapping.Items)
+    {
+        if (hbmMappingItem is HbmClass)
+        {
+            HbmClass hbmClass = (HbmClass)hbmMappingItem;
+            var table = tables.FirstOrDefault(t => t.Name == hbmClass.table);
+
+            classItem = new ClassItem();
+            classItem.Namespace = hbmMapping.@namespace;
+            classItem.Name = hbmClass.name;
+			classItem.TableName = table.CleanName;
+            //classItem.Comment = GetTableDesc(hbmClass.table);
+            string[] tmp = hbmClass.name.Split(',');
+            int idx = tmp[0].LastIndexOf('.') + 1;
+            classItem.EntityName = tmp[0].Substring(idx, tmp[0].Length - idx);
+            if (string.IsNullOrEmpty(classItem.Namespace))
+            {
+                classItem.Namespace = tmp[1];
+            }
+            classItem.Properties = new List<PropertyItem>();
+
+			//是否有主键ID
+            if (hbmClass.Id != null)
+            {
+                var column = table.Columns.FirstOrDefault(pc => pc.Name == hbmClass.Id.name);
+                classItem.Properties.Add(
+                new PropertyItem
+                {
+                    Name = hbmClass.Id.name,
+                    PropertyType = hbmClass.Id.type1 != null ? hbmClass.Id.type1 : "String",
+                    RelationType = RelationType.Property,
+					ColumnName = column.CleanName,
+                    IsNullable = false,
+					IsPrimaryKey = true,
+                    Comment = column.Comment
+                });
+            }
+
+			//是否有组合主键
+            if (hbmClass.CompositeId != null)
+            {
+                string idName = hbmClass.CompositeId.name;
+                string[] strArr = hbmClass.CompositeId.@class.Split(',');
+                int pos = strArr[0].LastIndexOf('.') + 1;
+                string idType = strArr[0].Substring(pos, strArr[0].Length - pos);
+                classItem.CompositeIdName = hbmClass.CompositeId.name;
+                classItem.CompositeIdType = idType.Substring(idType.IndexOf('+') + 1, idType.Length - idType.IndexOf('+') - 1);
+
+                foreach (object hbmClassCompositeIdItem in hbmClass.CompositeId.Items)
+                {
+                    if (hbmClassCompositeIdItem is HbmKeyManyToOne)
+                    {
+                        HbmKeyManyToOne hbmKeyManyToOne = (HbmKeyManyToOne)hbmClassCompositeIdItem;
+                        string[] strArray = hbmKeyManyToOne.@class.Split(',');
+                        int position = strArray[0].LastIndexOf('.') + 1;
+
+                        classItem.Properties.Add(
+                            new PropertyItem
+                            {
+                                Name = hbmKeyManyToOne.name,
+                                PropertyType = strArray[0].Substring(position, strArray[0].Length - position),
+                                RelationType = RelationType.CompositeId,
+                                ColumnName = hbmKeyManyToOne.column1
+                            }
+                        );
+                    }
+                }
+            }
+
+			//属性值集合
+            if (hbmClass.Items == null) { continue; }
+            foreach (object hbmClassItem in hbmClass.Items)
+            {
+                if (hbmClassItem is HbmProperty)			//默认
+                {
+                    HbmProperty hbmProperty = (HbmProperty)hbmClassItem;
+                    var column = table.Columns.FirstOrDefault(pc => pc.Name == hbmProperty.column);
+                    classItem.Properties.Add(
+                        new PropertyItem
+                        {
+                            Name = hbmProperty.name,
+                            PropertyType = (hbmProperty.type1 != null && hbmProperty.type1 != "StringClob") ? hbmProperty.type1 : "String",
+                            RelationType = RelationType.Property,
+							ColumnName = column.CleanName,
+                            IsNullable = !hbmProperty.notnull,
+							IsPrimaryKey = false,
+                            Comment = column.Comment
+                        }
+                    );
+                }
+                else if (hbmClassItem is HbmManyToOne)		//多对一
+                {
+                    HbmManyToOne hbmManyToOne = (HbmManyToOne)hbmClassItem;
+                    string[] strArray = hbmManyToOne.@class.Split(',');
+                    int position = strArray[0].LastIndexOf('.') + 1;
+                    classItem.Properties.Add(
+                        new PropertyItem
+                        {
+                            Name = hbmManyToOne.name,
+                            PropertyType = strArray[0].Substring(position, strArray[0].Length - position),
+                            RelationType = RelationType.ManyToOne,
+                            ColumnName = hbmManyToOne.column,
+                            IsNullable = !hbmManyToOne.notnull
+                        }
+                    );
+                }
+                else if (hbmClassItem is HbmSet)			//
+                {
+                    HbmSet hbmSet = (HbmSet)hbmClassItem;
+                    string[] strArray = ((HbmOneToMany)hbmSet.Item).@class.Split(',');
+                    int position = strArray[0].LastIndexOf('.') + 1;
+                    classItem.Properties.Add(
+                        new PropertyItem
+                        {
+                            Name = hbmSet.name,
+                            PropertyType = strArray[0].Substring(position, strArray[0].Length - position),
+                            RelationType = RelationType.ManyToMany
+                        }
+                    );
+                }
+                else if (hbmClassItem is HbmBag)			//
+                {
+                    HbmBag hbmBag = (HbmBag)hbmClassItem;
+                    string[] strArray = ((HbmOneToMany)hbmBag.Item).@class.Split(',');
+                    int position = strArray[0].LastIndexOf('.') + 1;
+                    classItem.Properties.Add(
+                        new PropertyItem
+                        {
+                            Name = hbmBag.name,
+                            PropertyType = strArray[0].Substring(position, strArray[0].Length - position),
+                            RelationType = RelationType.OneToMany,
+                            ColumnName = hbmBag.key.column[0].name
+                        }
+                    );
+                }
+                else if (hbmClassItem is HbmOneToOne)		//一对一
+                {
+                    HbmOneToOne hbmOneToOne = (HbmOneToOne)hbmClassItem;
+                    string[] strArray = hbmOneToOne.@class.Split(',');
+                    int position = strArray[0].LastIndexOf('.') + 1;                                
+                    classItem.Properties.Add(
+                        new PropertyItem
+                        {
+                            Name = hbmOneToOne.name,
+                            PropertyType = strArray[0].Substring(position, strArray[0].Length - position),
+                            RelationType = RelationType.OneToOne,
+                            IsNullable = false
+                        }
+                    );
+                }
+            }
+        }
+    }
+	manager.StartNewFile(classItem.EntityName+".cs");
+#>
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
+using z.Foundation.Data;
+
+namespace<#= classItem.Namespace #>
+{
+	[Serializable, CustomData(ConnectionName = "AdminCenterDB"), Table("<#= classItem.TableName #>")]
+	public partial class <#= classItem.EntityName #> : EntityBase
+    {
+<# 
+		var props = classItem.Properties.FindAll(prop => prop.RelationType == RelationType.CompositeId);
+		if (props != null && props.Count > 0)
+		{
+#>
+		/// <summary>
+		/// 复合主键
+		/// </summary>
+		public virtual <#= classItem.CompositeIdType #> <#= classItem.CompositeIdName #>
+        {
+            get;
+            set;
+        }
+
+		#region Nested type: <#= classItem.CompositeIdType #>
+
+		[Serializable]
+		public class <#= classItem.CompositeIdType #>
+		{
+<#
+			foreach (var prop in props)
+			{
+#>
+			public virtual <#= prop.GetPropertyType() #><#= prop.IsNullable && prop.GetPropertyType() != "String" && prop.GetPropertyType() !="Byte[]" ? "?" : "" #> <#= prop.Name #>
+			{ 
+				get; 
+				set; 
+			}
+<#
+			}
+#>
+			public override int GetHashCode()
+			{
+				return base.GetHashCode();
+			}
+
+			public override bool Equals(object obj)
+			{
+				if (obj == null || obj == DBNull.Value)
+				{
+					return false;
+				}
+				var entity = (<#= classItem.CompositeIdType #>)obj;
+<# 
+				string tm = string.Empty;
+				foreach (var prop in props)
+				{
+					if (!string.IsNullOrEmpty(tm))
+					{
+						tm += " && ";
+					}
+					tm += string.Format("({0} == entity.{0})", prop.Name);
+				}
+#>
+				return <#= tm #>;
+			}
+		}
+
+		#endregion
+<#
+	}
+	foreach (PropertyItem prop in classItem.Properties)
+	{
+		if (prop.RelationType == RelationType.Property)
+		{
+#>
+		/// <summary>
+<#
+		if (!string.IsNullOrEmpty(prop.Comment))
+		{
+			var summarys = prop.Comment.Split(new String[] {"\r\n"}, StringSplitOptions.None);
+			foreach (var s in summarys)
+			{
+#>
+		/// <#= s #>
+<#
+			}
+		}
+		else
+		{
+#>
+		///
+<#
+		}
+#>
+		/// </summary>
+<#
+		if (prop.IsPrimaryKey)
+		{
+#>
+		[Key, Column("<#= prop.ColumnName #>")]
+<#
+		}
+		else
+		{
+#>
+		[Column("<#= prop.ColumnName #>")]
+<#
+		}
+#>
+		public virtual <#= prop.GetPropertyType() #><#= prop.IsNullable && prop.GetPropertyType() != "String" && prop.GetPropertyType() != "string" && prop.GetPropertyType() != "Byte[]" ? "?" : "" #> <#= prop.Name #>
+        {
+            get;
+            set;
+        }
+
+<#
+		}
+	}
+	foreach (PropertyItem prop in classItem.Properties)
+	{
+		if (prop.RelationType == RelationType.ManyToOne)
+		{
+#>
+		/// <summary>
+		/// 外键<# if (!string.IsNullOrEmpty(prop.ColumnName)) { #><#= prop.ColumnName #><# } #>映射<#= prop.GetPropertyType() #>实体 关系: 多对一
+		/// </summary>
+		public virtual <#= prop.GetPropertyType() #> <#= prop.Name #>
+        {
+            get;
+            set;
+        }
+
+<#
+		}
+	}
+	foreach (PropertyItem prop in classItem.Properties)
+	{
+		if (prop.RelationType == RelationType.OneToMany)
+		{
+#>
+		/// <summary>
+		/// 外键<# if (!string.IsNullOrEmpty(prop.ColumnName)) { #><#= prop.ColumnName #><# } #>映射<#= prop.GetPropertyType() #>实体列表 关系: 一对多
+		/// </summary>
+		public virtual IList<<#= prop.GetPropertyType() #>> <#= Inflector.MakePlural(prop.Name) #>
+        {
+            get;
+            set;
+        }
+
+<#
+		}
+	}
+	foreach (PropertyItem prop in classItem.Properties)
+	{
+		if (prop.RelationType == RelationType.ManyToMany)
+		{
+#>
+		/// <summary>
+		/// 外键<# if (!string.IsNullOrEmpty(prop.ColumnName)) { #><#= prop.ColumnName #><# } #>映射<#= prop.GetPropertyType() #>实体列表 关系: 多对多
+		/// </summary>
+		public virtual IList<<#= prop.GetPropertyType() #>> <#= Inflector.MakePlural(prop.Name) #>
+        {
+            get;
+            set;
+        }
+
+<#
+		}
+	}
+	foreach (PropertyItem prop in classItem.Properties)
+	{
+		if (prop.RelationType == RelationType.OneToOne)
+		{
+#>
+		/// <summary>
+		/// 外键映射<#= prop.GetPropertyType() #>实体 关系: 一对一
+		/// </summary>
+		public virtual <#= prop.GetPropertyType() #> <#= prop.Name #>
+        {
+            get;
+            set;
+        }
+
+<#
+		}
+	}
+#>
+	}
+}
+<#
+	manager.EndBlock();
+}
+manager.Process(true);
+#>
+
+<#+
+public enum RelationType
+{
+    CompositeId, Property, ManyToOne, ManyToMany, OneToOne, OneToMany
+}
+
+public class ClassItem
+{
+    public string Name { get; set; }
+    public string Namespace { get; set; }
+    public string EntityName { get; set; }
+	public string TableName { get; set; }
+    public string Comment { get; set; }
+    public List<PropertyItem> Properties { get; set; }
+    public string CompositeIdName { get; set; }
+    public string CompositeIdType { get; set; }
+}
+
+public class PropertyItem
+{
+    public string ColumnName { get; set; }
+    public string Name { get; set; }
+    public string PropertyType { get; set; }
+    public bool IsNullable { get; set; }
+    public string Comment { get; set; }
+    public RelationType RelationType { get; set; }
+    public string ForeignKeyClassName { get; set; }
+    public string ForeignKeyID { get; set; }
+	public bool IsPrimaryKey { get; set; }
+
+    public string GetPropertyType()
+    {
+        return PropertyType.ToString().Replace("System.", "");
+    }
+
+    public string GetTypeCode()
+    {
+        return "TypeCode." + PropertyType.ToString().Replace("System.", "");
+    }
+}
+#>

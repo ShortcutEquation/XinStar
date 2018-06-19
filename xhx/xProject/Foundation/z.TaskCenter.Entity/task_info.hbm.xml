@@ -1,0 +1,19 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<hibernate-mapping default-cascade="none" xmlns="urn:nhibernate-mapping-2.2">
+	<class name="z.TaskCenter.Entity.task_info, z.TaskCenter.Entity" table="task_info" dynamic-update="true">
+		<id name="Id" type="System.Int32" column="Id" unsaved-value="0">
+			<generator class="native" />
+		</id>
+		<property name="TaskMainId" type="System.Int32" column="TaskMainId" not-null="true" />
+		<property name="Content" type="System.String" column="Content" not-null="true" />
+		<property name="TaskType" type="System.String" column="TaskType" not-null="true" />
+		<property name="TaskStatus" type="System.Int32" column="TaskStatus" not-null="true" />
+		<property name="ParentTaskId" type="System.Int32" column="ParentTaskId" not-null="true" />
+		<property name="SortNo" type="System.Int32" column="SortNo" not-null="true" />
+		<property name="CreatedOn" type="System.DateTime" column="CreatedOn" not-null="false" />
+		<property name="FinishedOn" type="System.DateTime" column="FinishedOn" not-null="false" />
+		<property name="RetryTimes" type="System.Int32" column="RetryTimes" not-null="true" />
+		<property name="ExecuteResult" type="System.String" column="ExecuteResult" not-null="false" />
+		<property name="CustomContent" type="System.String" column="CustomContent" not-null="false" />
+	</class>
+</hibernate-mapping>

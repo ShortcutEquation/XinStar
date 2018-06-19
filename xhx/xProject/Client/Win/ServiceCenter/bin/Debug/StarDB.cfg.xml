@@ -1,0 +1,13 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<hibernate-configuration xmlns="urn:nhibernate-configuration-2.2">
+  <session-factory>
+    <property name="connection.provider">NHibernate.Connection.DriverConnectionProvider</property>
+    <property name="dialect">NHibernate.Dialect.MySQL5Dialect</property>
+    <property name="connection.driver_class">NHibernate.Driver.MySqlDataDriver</property>
+    <property name="command_timeout">600</property>
+    <property name="connection.connection_string">Data Source=rm-bp1mfgfxuwbr8m0r3eo.mysql.rds.aliyuncs.com;Database=xinstar;User ID=root;Password=Xin123456!;Sslmode=none;</property>
+    <property name="show_sql">false</property>
+    <property name="current_session_context_class">wcf_operation</property>
+    <mapping assembly="com.star.Entity.StarDB"/>
+  </session-factory>
+</hibernate-configuration>

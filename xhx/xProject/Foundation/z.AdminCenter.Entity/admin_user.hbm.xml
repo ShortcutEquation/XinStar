@@ -1,0 +1,18 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<hibernate-mapping default-cascade="none" xmlns="urn:nhibernate-mapping-2.2">
+	<class name="z.AdminCenter.Entity.admin_user, z.AdminCenter.Entity" table="admin_user" dynamic-update="true">
+		<id name="AdminUserId" type="System.Int32" column="AdminUserId" unsaved-value="0">
+			<generator class="native" />
+		</id>
+		<property name="AdminName" type="System.String" column="AdminName" not-null="true" />
+		<property name="Password" type="System.String" column="Password" not-null="true" />
+		<property name="RealName" type="System.String" column="RealName" not-null="true" />
+		<property name="Logo" type="System.String" column="Logo" not-null="false" />
+		<property name="Disabled" type="System.Boolean" column="Disabled" not-null="true" />
+		<property name="Deleted" type="System.Boolean" column="Deleted" not-null="true" />
+		<property name="CreateBy" type="System.String" column="CreateBy" not-null="true" />
+		<property name="CreateOn" type="System.DateTime" column="CreateOn" not-null="true" />
+		<property name="UpdateBy" type="System.String" column="UpdateBy" not-null="false" />
+		<property name="UpdateOn" type="System.DateTime" column="UpdateOn" not-null="false" />
+	</class>
+</hibernate-mapping>

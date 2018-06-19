@@ -1,0 +1,14 @@
+C:\Git_Papago_Project\z\v4.5\z.Foundation\bin\Release\z.Foundation.dll
+C:\Git_Papago_Project\z\v4.5\z.Foundation\bin\Release\z.Foundation.pdb
+C:\Git_Papago_Project\z\v4.5\z.Foundation\bin\Release\Enyim.Caching.dll
+C:\Git_Papago_Project\z\v4.5\z.Foundation\bin\Release\Enyim.Caching.Web.dll
+C:\Git_Papago_Project\z\v4.5\z.Foundation\bin\Release\Gif.Components.dll
+C:\Git_Papago_Project\z\v4.5\z.Foundation\bin\Release\log4net.dll
+C:\Git_Papago_Project\z\v4.5\z.Foundation\bin\Release\Membase.dll
+C:\Git_Papago_Project\z\v4.5\z.Foundation\bin\Release\Newtonsoft.Json.dll
+C:\Git_Papago_Project\z\v4.5\z.Foundation\bin\Release\Enyim.Caching.xml
+C:\Git_Papago_Project\z\v4.5\z.Foundation\bin\Release\log4net.xml
+C:\Git_Papago_Project\z\v4.5\z.Foundation\bin\Release\Membase.xml
+C:\Git_Papago_Project\z\v4.5\z.Foundation\bin\Release\Newtonsoft.Json.xml
+C:\Git_Papago_Project\z\v4.5\z.Foundation\obj\Release\z.Foundation.dll
+C:\Git_Papago_Project\z\v4.5\z.Foundation\obj\Release\z.Foundation.pdb

@@ -1,0 +1,17 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<hibernate-mapping default-cascade="none" xmlns="urn:nhibernate-mapping-2.2">
+	<class name="z.ApiCenter.Entity.api_system, z.ApiCenter.Entity" table="api_system" dynamic-update="true">
+		<id name="Id" type="System.Int32" column="Id" unsaved-value="0">
+			<generator class="native" />
+		</id>
+		<property name="SystemCode" type="System.String" column="SystemCode" not-null="true" />
+		<property name="Name" type="System.String" column="Name" not-null="true" />
+		<property name="Description" type="System.String" column="Description" not-null="false" />
+		<property name="Url" type="System.String" column="Url" not-null="false" />
+		<property name="CreatedBy" type="System.String" column="CreatedBy" not-null="true" />
+		<property name="CreatedOn" type="System.DateTime" column="CreatedOn" not-null="true" />
+		<property name="Deleted" type="System.Boolean" column="Deleted" not-null="true" />
+		<property name="UpdatedBy" type="System.String" column="UpdatedBy" not-null="false" />
+		<property name="UpdatedOn" type="System.DateTime" column="UpdatedOn" not-null="false" />
+	</class>
+</hibernate-mapping>

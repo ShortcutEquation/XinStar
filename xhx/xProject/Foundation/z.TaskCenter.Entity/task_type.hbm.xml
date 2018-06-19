@@ -1,0 +1,11 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<hibernate-mapping default-cascade="none" xmlns="urn:nhibernate-mapping-2.2">
+	<class name="z.TaskCenter.Entity.task_type, z.TaskCenter.Entity" table="task_type" dynamic-update="true">
+		<id name="Id" type="System.Int32" column="Id" unsaved-value="0">
+			<generator class="native" />
+		</id>
+		<property name="TaskType" type="System.String" column="TaskType" not-null="true" />
+		<property name="Name" type="System.String" column="Name" not-null="true" />
+		<property name="BussinessType" type="System.Int32" column="BussinessType" not-null="true" />
+	</class>
+</hibernate-mapping>

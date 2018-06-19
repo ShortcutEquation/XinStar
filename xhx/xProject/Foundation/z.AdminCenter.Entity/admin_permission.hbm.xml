@@ -1,0 +1,25 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<hibernate-mapping default-cascade="none" xmlns="urn:nhibernate-mapping-2.2">
+	<class name="z.AdminCenter.Entity.admin_permission, z.AdminCenter.Entity" table="admin_permission" dynamic-update="true">
+		<id name="AdminPermissionId" type="System.Int32" column="AdminPermissionId" unsaved-value="0">
+			<generator class="native" />
+		</id>
+		<property name="SystemId" type="System.Int32" column="SystemId" not-null="true" />
+		<property name="ParentId" type="System.Int32" column="ParentId" not-null="true" />
+		<property name="PermissionCode" type="System.String" column="PermissionCode" not-null="true" />
+		<property name="Name" type="System.String" column="Name" not-null="true" />
+		<property name="Img" type="System.String" column="Img" not-null="false" />
+		<property name="Description" type="System.String" column="Description" not-null="false" />
+		<property name="IsMenu" type="System.Boolean" column="IsMenu" not-null="true" />
+		<property name="IsLink" type="System.Boolean" column="IsLink" not-null="true" />
+		<property name="Url" type="System.String" column="Url" not-null="false" />
+		<property name="Target" type="System.String" column="Target" not-null="false" />
+		<property name="SortNo" type="System.Int32" column="SortNo" not-null="true" />
+		<property name="Disabled" type="System.Boolean" column="Disabled" not-null="true" />
+		<property name="Deleted" type="System.Boolean" column="Deleted" not-null="true" />
+		<property name="CreateBy" type="System.String" column="CreateBy" not-null="true" />
+		<property name="CreateOn" type="System.DateTime" column="CreateOn" not-null="true" />
+		<property name="UpdateBy" type="System.String" column="UpdateBy" not-null="false" />
+		<property name="UpdateOn" type="System.DateTime" column="UpdateOn" not-null="false" />
+	</class>
+</hibernate-mapping>

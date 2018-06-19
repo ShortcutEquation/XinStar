@@ -1,0 +1,10 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<hibernate-mapping default-cascade="none" xmlns="urn:nhibernate-mapping-2.2">
+	<class name="z.AdminCenter.Entity.admin_user_group, z.AdminCenter.Entity" table="admin_user_group" dynamic-update="true">
+		<id name="AdminUserGroupId" type="System.Int32" column="AdminUserGroupId" unsaved-value="0">
+			<generator class="native" />
+		</id>
+		<property name="UserId" type="System.Int32" column="UserId" not-null="true" />
+		<property name="GroupId" type="System.Int32" column="GroupId" not-null="true" />
+	</class>
+</hibernate-mapping>

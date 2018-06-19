@@ -1,0 +1,10 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<hibernate-mapping default-cascade="none" xmlns="urn:nhibernate-mapping-2.2">
+	<class name="z.AdminCenter.Entity.admin_role_user, z.AdminCenter.Entity" table="admin_role_user" dynamic-update="true">
+		<id name="AdminRoleUserId" type="System.Int32" column="AdminRoleUserId" unsaved-value="0">
+			<generator class="native" />
+		</id>
+		<property name="RoleId" type="System.Int32" column="RoleId" not-null="true" />
+		<property name="UserId" type="System.Int32" column="UserId" not-null="true" />
+	</class>
+</hibernate-mapping>
