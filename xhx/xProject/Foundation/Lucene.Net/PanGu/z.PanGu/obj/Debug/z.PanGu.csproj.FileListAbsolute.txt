@@ -1,0 +1,14 @@
+C:\Git_Papago_Project\z\v2.0\z.PanGu\bin\Debug\z.PanGu.dll
+C:\Git_Papago_Project\z\v2.0\z.PanGu\bin\Debug\z.PanGu.pdb
+C:\Git_Papago_Project\z\v2.0\z.PanGu\obj\Debug\z.PanGu.csprojResolveAssemblyReference.cache
+C:\Git_Papago_Project\z\v2.0\z.PanGu\obj\Debug\PanGu.AnalyzerResource.resources
+C:\Git_Papago_Project\z\v2.0\z.PanGu\obj\Debug\z.PanGu.csproj.GenerateResource.Cache
+C:\Git_Papago_Project\z\v2.0\z.PanGu\obj\Debug\z.PanGu.dll
+C:\Git_Papago_Project\z\v2.0\z.PanGu\obj\Debug\z.PanGu.pdb
+C:\XinStarProject\xhx\xProject\Foundation\Lucene.Net\PanGu\z.PanGu\bin\Debug\z.PanGu.dll
+C:\XinStarProject\xhx\xProject\Foundation\Lucene.Net\PanGu\z.PanGu\bin\Debug\z.PanGu.pdb
+C:\XinStarProject\xhx\xProject\Foundation\Lucene.Net\PanGu\z.PanGu\obj\Debug\z.PanGu.csprojResolveAssemblyReference.cache
+C:\XinStarProject\xhx\xProject\Foundation\Lucene.Net\PanGu\z.PanGu\obj\Debug\PanGu.AnalyzerResource.resources
+C:\XinStarProject\xhx\xProject\Foundation\Lucene.Net\PanGu\z.PanGu\obj\Debug\z.PanGu.csproj.GenerateResource.Cache
+C:\XinStarProject\xhx\xProject\Foundation\Lucene.Net\PanGu\z.PanGu\obj\Debug\z.PanGu.dll
+C:\XinStarProject\xhx\xProject\Foundation\Lucene.Net\PanGu\z.PanGu\obj\Debug\z.PanGu.pdb

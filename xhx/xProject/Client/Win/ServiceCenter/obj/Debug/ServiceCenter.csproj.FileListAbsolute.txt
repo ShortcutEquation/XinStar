@@ -33,3 +33,11 @@ C:\XinStarProject\xhx\xProject\Client\Win\ServiceCenter\obj\Debug\ServiceCenter.
 C:\XinStarProject\xhx\xProject\Client\Win\ServiceCenter\obj\Debug\ServiceCenter.pdb
 C:\XinStarProject\xhx\xProject\Client\Win\ServiceCenter\bin\Debug\StarDB.cfg.xml
 C:\XinStarProject\xhx\xProject\Client\Win\ServiceCenter\bin\Debug\LogicInvoker.config
+C:\XinStarProject\xhx\xProject\Client\Win\ServiceCenter\bin\Debug\com.star.Logic.Search.dll
+C:\XinStarProject\xhx\xProject\Client\Win\ServiceCenter\bin\Debug\z.Lucene.Net.dll
+C:\XinStarProject\xhx\xProject\Client\Win\ServiceCenter\bin\Debug\z.PanGu.dll
+C:\XinStarProject\xhx\xProject\Client\Win\ServiceCenter\bin\Debug\z.PanGu.Lucene.Analyzer.dll
+C:\XinStarProject\xhx\xProject\Client\Win\ServiceCenter\bin\Debug\com.star.Logic.Search.pdb
+C:\XinStarProject\xhx\xProject\Client\Win\ServiceCenter\bin\Debug\z.Lucene.Net.pdb
+C:\XinStarProject\xhx\xProject\Client\Win\ServiceCenter\bin\Debug\z.PanGu.pdb
+C:\XinStarProject\xhx\xProject\Client\Win\ServiceCenter\bin\Debug\z.PanGu.Lucene.Analyzer.pdb

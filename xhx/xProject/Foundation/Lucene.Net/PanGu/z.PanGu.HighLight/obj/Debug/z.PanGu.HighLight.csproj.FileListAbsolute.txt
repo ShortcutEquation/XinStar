@@ -1,0 +1,7 @@
+C:\Git_Papago_Project\z\v2.0\z.PanGu.HighLight\bin\Debug\z.PanGu.HighLight.dll
+C:\Git_Papago_Project\z\v2.0\z.PanGu.HighLight\bin\Debug\z.PanGu.HighLight.pdb
+C:\Git_Papago_Project\z\v2.0\z.PanGu.HighLight\bin\Debug\z.PanGu.dll
+C:\Git_Papago_Project\z\v2.0\z.PanGu.HighLight\bin\Debug\z.PanGu.pdb
+C:\Git_Papago_Project\z\v2.0\z.PanGu.HighLight\obj\Debug\z.PanGu.HighLight.csprojResolveAssemblyReference.cache
+C:\Git_Papago_Project\z\v2.0\z.PanGu.HighLight\obj\Debug\z.PanGu.HighLight.dll
+C:\Git_Papago_Project\z\v2.0\z.PanGu.HighLight\obj\Debug\z.PanGu.HighLight.pdb

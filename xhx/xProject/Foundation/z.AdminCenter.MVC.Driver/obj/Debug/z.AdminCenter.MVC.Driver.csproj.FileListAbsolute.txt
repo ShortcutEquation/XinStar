@@ -73,3 +73,5 @@ C:\XinStarProject\xhx\xProject\Foundation\z.AdminCenter.MVC.Driver\bin\Debug\log
 C:\XinStarProject\xhx\xProject\Foundation\z.AdminCenter.MVC.Driver\obj\Debug\z.AdminCenter.MVC.Driver.csprojResolveAssemblyReference.cache
 C:\XinStarProject\xhx\xProject\Foundation\z.AdminCenter.MVC.Driver\obj\Debug\z.AdminCenter.MVC.Driver.dll
 C:\XinStarProject\xhx\xProject\Foundation\z.AdminCenter.MVC.Driver\obj\Debug\z.AdminCenter.MVC.Driver.pdb
+C:\XinStarProject\xhx\xProject\Foundation\z.AdminCenter.MVC.Driver\bin\Debug\System.Web.Mvc.dll
+C:\XinStarProject\xhx\xProject\Foundation\z.AdminCenter.MVC.Driver\bin\Debug\System.Web.Mvc.xml

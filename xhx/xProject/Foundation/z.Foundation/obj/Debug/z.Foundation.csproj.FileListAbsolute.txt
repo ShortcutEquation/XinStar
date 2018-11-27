@@ -18,3 +18,4 @@ C:\XinStarProject\xhx\xProject\Foundation\z.Foundation\bin\Debug\log4net.dll
 C:\XinStarProject\xhx\xProject\Foundation\z.Foundation\bin\Debug\log4net.xml
 C:\XinStarProject\xhx\xProject\Foundation\z.Foundation\obj\Debug\z.Foundation.dll
 C:\XinStarProject\xhx\xProject\Foundation\z.Foundation\obj\Debug\z.Foundation.pdb
+C:\XinStarProject\xhx\xProject\Foundation\z.Foundation\obj\Debug\z.Foundation.csprojResolveAssemblyReference.cache

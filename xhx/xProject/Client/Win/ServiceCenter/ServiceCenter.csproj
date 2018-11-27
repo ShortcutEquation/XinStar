@@ -76,6 +76,10 @@
       <Project>{e6825a56-62e9-4b05-94fe-9ae0fe8f7d56}</Project>
       <Name>com.star.Logic.Passport</Name>
     </ProjectReference>
+    <ProjectReference Include="..\..\..\Logic\com.star.Logic.Search\com.star.Logic.Search.csproj">
+      <Project>{a3512cb4-38b9-47c1-ad1d-6d2e66e70cf1}</Project>
+      <Name>com.star.Logic.Search</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <Content Include="StarDB.cfg.xml">

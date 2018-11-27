@@ -1,0 +1,11 @@
+C:\Git_Papago_Project\z\v3.5\z.Lucene.Net\bin\Debug\z.Lucene.Net.dll
+C:\Git_Papago_Project\z\v3.5\z.Lucene.Net\bin\Debug\z.Lucene.Net.pdb
+C:\Git_Papago_Project\z\v3.5\z.Lucene.Net\bin\Debug\ICSharpCode.SharpZipLib.dll
+C:\Git_Papago_Project\z\v3.5\z.Lucene.Net\obj\Debug\z.Lucene.Net.csprojResolveAssemblyReference.cache
+C:\Git_Papago_Project\z\v3.5\z.Lucene.Net\obj\Debug\z.Lucene.Net.dll
+C:\Git_Papago_Project\z\v3.5\z.Lucene.Net\obj\Debug\z.Lucene.Net.pdb
+C:\XinStarProject\xhx\xProject\Foundation\Lucene.Net\Lucene\z.Lucene.Net\bin\Debug\z.Lucene.Net.dll
+C:\XinStarProject\xhx\xProject\Foundation\Lucene.Net\Lucene\z.Lucene.Net\bin\Debug\z.Lucene.Net.pdb
+C:\XinStarProject\xhx\xProject\Foundation\Lucene.Net\Lucene\z.Lucene.Net\obj\Debug\z.Lucene.Net.csprojResolveAssemblyReference.cache
+C:\XinStarProject\xhx\xProject\Foundation\Lucene.Net\Lucene\z.Lucene.Net\obj\Debug\z.Lucene.Net.dll
+C:\XinStarProject\xhx\xProject\Foundation\Lucene.Net\Lucene\z.Lucene.Net\obj\Debug\z.Lucene.Net.pdb

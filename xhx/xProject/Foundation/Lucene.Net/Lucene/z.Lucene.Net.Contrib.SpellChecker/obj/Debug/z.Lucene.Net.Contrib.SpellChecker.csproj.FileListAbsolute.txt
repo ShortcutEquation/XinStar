@@ -1,0 +1,14 @@
+C:\Git_Papago_Project\z\v3.5\z.Lucene.Net.Contrib.SpellChecker\bin\Debug\z.Lucene.Net.Contrib.SpellChecker.dll
+C:\Git_Papago_Project\z\v3.5\z.Lucene.Net.Contrib.SpellChecker\bin\Debug\z.Lucene.Net.Contrib.SpellChecker.pdb
+C:\Git_Papago_Project\z\v3.5\z.Lucene.Net.Contrib.SpellChecker\bin\Debug\z.Lucene.Net.dll
+C:\Git_Papago_Project\z\v3.5\z.Lucene.Net.Contrib.SpellChecker\bin\Debug\z.Lucene.Net.pdb
+C:\Git_Papago_Project\z\v3.5\z.Lucene.Net.Contrib.SpellChecker\obj\Debug\z.Lucene.Net.Contrib.SpellChecker.csprojResolveAssemblyReference.cache
+C:\Git_Papago_Project\z\v3.5\z.Lucene.Net.Contrib.SpellChecker\obj\Debug\z.Lucene.Net.Contrib.SpellChecker.dll
+C:\Git_Papago_Project\z\v3.5\z.Lucene.Net.Contrib.SpellChecker\obj\Debug\z.Lucene.Net.Contrib.SpellChecker.pdb
+C:\XinStarProject\xhx\xProject\Foundation\Lucene.Net\Lucene\z.Lucene.Net.Contrib.SpellChecker\bin\Debug\z.Lucene.Net.Contrib.SpellChecker.dll
+C:\XinStarProject\xhx\xProject\Foundation\Lucene.Net\Lucene\z.Lucene.Net.Contrib.SpellChecker\bin\Debug\z.Lucene.Net.Contrib.SpellChecker.pdb
+C:\XinStarProject\xhx\xProject\Foundation\Lucene.Net\Lucene\z.Lucene.Net.Contrib.SpellChecker\bin\Debug\z.Lucene.Net.dll
+C:\XinStarProject\xhx\xProject\Foundation\Lucene.Net\Lucene\z.Lucene.Net.Contrib.SpellChecker\bin\Debug\z.Lucene.Net.pdb
+C:\XinStarProject\xhx\xProject\Foundation\Lucene.Net\Lucene\z.Lucene.Net.Contrib.SpellChecker\obj\Debug\z.Lucene.Net.Contrib.SpellChecker.csprojResolveAssemblyReference.cache
+C:\XinStarProject\xhx\xProject\Foundation\Lucene.Net\Lucene\z.Lucene.Net.Contrib.SpellChecker\obj\Debug\z.Lucene.Net.Contrib.SpellChecker.dll
+C:\XinStarProject\xhx\xProject\Foundation\Lucene.Net\Lucene\z.Lucene.Net.Contrib.SpellChecker\obj\Debug\z.Lucene.Net.Contrib.SpellChecker.pdb

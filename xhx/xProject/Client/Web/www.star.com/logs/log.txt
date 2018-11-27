@@ -2036,3 +2036,65 @@ Exception rethrown at [0]:
    在 z.Foundation.LogicInvoke.WCFLogicTunnel.Call(IRequest request) 位置 C:\XinStarProject\xhx\xProject\Foundation\z.Foundation.LogicInvoke\WCFLogicTunnel.cs:行号 125
 
 时间:2018-06-13 22:20:24,990 - INFO :这代码有毛病
+
+时间:2018-08-27 11:28:04,192 - ERROR:无法连接到远程服务器
+调用:Target:com.star.Logic.Search.dll | Class:com.star.Logic.Search.BuiltIndex_SingleThread | Method:StartBuild | Parameter:参数为null
+System.ServiceModel.EndpointNotFoundException: 没有终结点在侦听可以接受消息的 http://127.0.0.1:65489/。这通常是由于不正确的地址或者 SOAP 操作导致的。如果存在此情况，请参见 InnerException 以了解详细信息。 ---> System.Net.WebException: 无法连接到远程服务器 ---> System.Net.Sockets.SocketException: 由于目标计算机积极拒绝，无法连接。 127.0.0.1:65489
+   在 System.Net.Sockets.Socket.DoConnect(EndPoint endPointSnapshot, SocketAddress socketAddress)
+   在 System.Net.ServicePoint.ConnectSocketInternal(Boolean connectFailure, Socket s4, Socket s6, Socket& socket, IPAddress& address, ConnectSocketState state, IAsyncResult asyncResult, Exception& exception)
+   --- 内部异常堆栈跟踪的结尾 ---
+   在 System.Net.HttpWebRequest.GetRequestStream(TransportContext& context)
+   在 System.Net.HttpWebRequest.GetRequestStream()
+   在 System.ServiceModel.Channels.HttpOutput.WebRequestHttpOutput.GetOutputStream()
+   --- 内部异常堆栈跟踪的结尾 ---
+
+Server stack trace: 
+   在 System.ServiceModel.Channels.HttpOutput.WebRequestHttpOutput.GetOutputStream()
+   在 System.ServiceModel.Channels.HttpOutput.Send(TimeSpan timeout)
+   在 System.ServiceModel.Channels.HttpChannelFactory`1.HttpRequestChannel.HttpChannelRequest.SendRequest(Message message, TimeSpan timeout)
+   在 System.ServiceModel.Channels.RequestChannel.Request(Message message, TimeSpan timeout)
+   在 System.ServiceModel.Dispatcher.RequestChannelBinder.Request(Message message, TimeSpan timeout)
+   在 System.ServiceModel.Channels.ServiceChannel.Call(String action, Boolean oneway, ProxyOperationRuntime operation, Object[] ins, Object[] outs, TimeSpan timeout)
+   在 System.ServiceModel.Channels.ServiceChannelProxy.InvokeService(IMethodCallMessage methodCall, ProxyOperationRuntime operation)
+   在 System.ServiceModel.Channels.ServiceChannelProxy.Invoke(IMessage message)
+
+Exception rethrown at [0]: 
+   在 System.Runtime.Remoting.Proxies.RealProxy.HandleReturnMessage(IMessage reqMsg, IMessage retMsg)
+   在 System.Runtime.Remoting.Proxies.RealProxy.PrivateInvoke(MessageData& msgData, Int32 type)
+   在 z.Foundation.LogicInvoke.IWCFService.Execute(String serializeString)
+   在 z.Foundation.LogicInvoke.WCFServiceClient.Execute(String serializeString) 位置 C:\XinStarProject\xhx\xProject\Foundation\z.Foundation.LogicInvoke\WCFProxy.cs:行号 42
+   在 z.Foundation.LogicInvoke.WCFLogicTunnel.Call(IRequest request) 位置 C:\XinStarProject\xhx\xProject\Foundation\z.Foundation.LogicInvoke\WCFLogicTunnel.cs:行号 125
+
+时间:2018-08-27 11:28:04,213 - INFO :这代码有毛病
+
+时间:2018-08-27 11:53:06,998 - ERROR:基础连接已经关闭: 接收时发生错误。
+调用:Target:com.star.Logic.Search.dll | Class:com.star.Logic.Search.BuiltIndex_SingleThread | Method:StartBuild | Parameter:参数为null
+System.ServiceModel.CommunicationException: 接收对 http://127.0.0.1:65489/ 的 HTTP 响应时发生错误。这可能是由于服务终结点绑定未使用 HTTP 协议造成的。这还可能是由于服务器中止了 HTTP 请求上下文(可能由于服务关闭)所致。有关详细信息，请参见服务器日志。 ---> System.Net.WebException: 基础连接已经关闭: 接收时发生错误。 ---> System.IO.IOException: 无法从传输连接中读取数据: 远程主机强迫关闭了一个现有的连接。。 ---> System.Net.Sockets.SocketException: 远程主机强迫关闭了一个现有的连接。
+   在 System.Net.Sockets.Socket.Receive(Byte[] buffer, Int32 offset, Int32 size, SocketFlags socketFlags)
+   在 System.Net.Sockets.NetworkStream.Read(Byte[] buffer, Int32 offset, Int32 size)
+   --- 内部异常堆栈跟踪的结尾 ---
+   在 System.Net.Sockets.NetworkStream.Read(Byte[] buffer, Int32 offset, Int32 size)
+   在 System.Net.PooledStream.Read(Byte[] buffer, Int32 offset, Int32 size)
+   在 System.Net.Connection.SyncRead(HttpWebRequest request, Boolean userRetrievedStream, Boolean probeRead)
+   --- 内部异常堆栈跟踪的结尾 ---
+   在 System.Net.HttpWebRequest.GetResponse()
+   在 System.ServiceModel.Channels.HttpChannelFactory`1.HttpRequestChannel.HttpChannelRequest.WaitForReply(TimeSpan timeout)
+   --- 内部异常堆栈跟踪的结尾 ---
+
+Server stack trace: 
+   在 System.ServiceModel.Channels.HttpChannelUtilities.ProcessGetResponseWebException(WebException webException, HttpWebRequest request, HttpAbortReason abortReason)
+   在 System.ServiceModel.Channels.HttpChannelFactory`1.HttpRequestChannel.HttpChannelRequest.WaitForReply(TimeSpan timeout)
+   在 System.ServiceModel.Channels.RequestChannel.Request(Message message, TimeSpan timeout)
+   在 System.ServiceModel.Dispatcher.RequestChannelBinder.Request(Message message, TimeSpan timeout)
+   在 System.ServiceModel.Channels.ServiceChannel.Call(String action, Boolean oneway, ProxyOperationRuntime operation, Object[] ins, Object[] outs, TimeSpan timeout)
+   在 System.ServiceModel.Channels.ServiceChannelProxy.InvokeService(IMethodCallMessage methodCall, ProxyOperationRuntime operation)
+   在 System.ServiceModel.Channels.ServiceChannelProxy.Invoke(IMessage message)
+
+Exception rethrown at [0]: 
+   在 System.Runtime.Remoting.Proxies.RealProxy.HandleReturnMessage(IMessage reqMsg, IMessage retMsg)
+   在 System.Runtime.Remoting.Proxies.RealProxy.PrivateInvoke(MessageData& msgData, Int32 type)
+   在 z.Foundation.LogicInvoke.IWCFService.Execute(String serializeString)
+   在 z.Foundation.LogicInvoke.WCFServiceClient.Execute(String serializeString) 位置 C:\XinStarProject\xhx\xProject\Foundation\z.Foundation.LogicInvoke\WCFProxy.cs:行号 42
+   在 z.Foundation.LogicInvoke.WCFLogicTunnel.Call(IRequest request) 位置 C:\XinStarProject\xhx\xProject\Foundation\z.Foundation.LogicInvoke\WCFLogicTunnel.cs:行号 125
+
+时间:2018-08-27 11:53:07,019 - INFO :这代码有毛病

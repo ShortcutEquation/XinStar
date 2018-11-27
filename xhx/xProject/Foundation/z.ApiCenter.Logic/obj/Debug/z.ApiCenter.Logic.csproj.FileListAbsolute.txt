@@ -55,7 +55,6 @@ C:\XinStarProject\xhx\xProject\Foundation\z.ApiCenter.Logic\bin\Debug\z.ApiCente
 C:\XinStarProject\xhx\xProject\Foundation\z.ApiCenter.Logic\bin\Debug\z.Foundation.Data.pdb
 C:\XinStarProject\xhx\xProject\Foundation\z.ApiCenter.Logic\bin\Debug\z.Foundation.pdb
 C:\XinStarProject\xhx\xProject\Foundation\z.ApiCenter.Logic\bin\Debug\z.Logic.Base.pdb
-C:\XinStarProject\xhx\xProject\Foundation\z.ApiCenter.Logic\bin\Debug\NHibernate.xml
 C:\XinStarProject\xhx\xProject\Foundation\z.ApiCenter.Logic\bin\Debug\log4net.xml
 C:\XinStarProject\xhx\xProject\Foundation\z.ApiCenter.Logic\obj\Debug\z.ApiCenter.Logic.csprojResolveAssemblyReference.cache
 C:\XinStarProject\xhx\xProject\Foundation\z.ApiCenter.Logic\obj\Debug\z.ApiCenter.Logic.dll

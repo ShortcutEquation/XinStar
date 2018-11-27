@@ -1,0 +1,6 @@
+C:\XinStarProject\xhx\xProject\Client\Win\MicroApplication\MultiThreadTest\bin\Debug\MultiThreadTest.exe.config
+C:\XinStarProject\xhx\xProject\Client\Win\MicroApplication\MultiThreadTest\bin\Debug\MultiThreadTest.exe
+C:\XinStarProject\xhx\xProject\Client\Win\MicroApplication\MultiThreadTest\bin\Debug\MultiThreadTest.pdb
+C:\XinStarProject\xhx\xProject\Client\Win\MicroApplication\MultiThreadTest\obj\Debug\MultiThreadTest.csprojResolveAssemblyReference.cache
+C:\XinStarProject\xhx\xProject\Client\Win\MicroApplication\MultiThreadTest\obj\Debug\MultiThreadTest.exe
+C:\XinStarProject\xhx\xProject\Client\Win\MicroApplication\MultiThreadTest\obj\Debug\MultiThreadTest.pdb

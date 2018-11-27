@@ -21,10 +21,11 @@ namespace www.star.com.Controllers
             var model = new test();
             var name = "xiehx";
             //调用服务 test
-            IResponse<test> response = CallLogic<string, test>("com.star.Logic.Passport.dll", "com.star.Logic.Passport.PassportManage", "Passport", name);
+            //IResponse<test> response = CallLogic<string, test>("com.star.Logic.Passport.dll", "com.star.Logic.Passport.PassportManage", "Passport", name);
+            var response = CallLogic<object, object>("com.star.Logic.Search.dll", "com.star.Logic.Search.BuiltIndex_SingleThread", "StartBuild", null);
             if (response.Succeeded)
             {
-                model = response.Result;
+                //model = response.Result;
                 Console.WriteLine(model.Name + ":" + model.Remark);
                 Console.ReadLine();
             }

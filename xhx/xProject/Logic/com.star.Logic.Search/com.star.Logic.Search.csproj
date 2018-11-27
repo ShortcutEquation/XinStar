@@ -1,0 +1,79 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{A3512CB4-38B9-47C1-AD1D-6D2E66E70CF1}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>com.star.Logic.Search</RootNamespace>
+    <AssemblyName>com.star.Logic.Search</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="DataSource.cs" />
+    <Compile Include="XSimilarity.cs" />
+    <Compile Include="Constant.cs" />
+    <Compile Include="BuiltIndex_SingleThread.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\Foundation\Lucene.Net\Lucene\PanGu.Lucene.Analyzer\z.PanGu.Lucene.Analyzer.csproj">
+      <Project>{5A6AFB41-632D-46C0-B1AB-EB8B10C70A2A}</Project>
+      <Name>z.PanGu.Lucene.Analyzer</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Foundation\Lucene.Net\Lucene\z.Lucene.Net\z.Lucene.Net.csproj">
+      <Project>{5D4AD9BE-1FFB-41AB-9943-25737971BF57}</Project>
+      <Name>z.Lucene.Net</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Foundation\Lucene.Net\PanGu\z.PanGu\z.PanGu.csproj">
+      <Project>{091e1c60-f77b-45a1-844c-86c5f508b57b}</Project>
+      <Name>z.PanGu</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Foundation\z.Foundation.Data\z.Foundation.Data.csproj">
+      <Project>{37E03FA3-0531-4A3A-9EAF-A0469B20F9F1}</Project>
+      <Name>z.Foundation.Data</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Foundation\z.Foundation\z.Foundation.csproj">
+      <Project>{866936FE-F516-4394-8A19-A11757E1E2B2}</Project>
+      <Name>z.Foundation</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
